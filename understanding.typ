@@ -757,7 +757,7 @@ languages:
 
     [function], [
         ```typc let f(x, y: 1) = {x + y}``` \
-        ```typc let f = (x, y: 1) => [#(x+y)]``` \
+        ```typc let f= (x, y: 1) => [#(x+y)]``` \
         ```typc let f(x,y) = x + y``` \
         ```typc let f = x => x + 1``` \
         \
