@@ -762,6 +762,19 @@ languages:
         ```typc let f = x => x + 1``` \
         \
         ```typc
+            let add1(x) = {
+                return x + 1
+                x + 2 // not executed
+            }
+            ```
+        ```typc
+            let add1(x) = {
+                x + 1
+                return
+                x + 2 // not executed
+            }
+            ``` \
+        ```typc
             // closure:
             let adder(n) = x => x+n
             let add1 = adder(1)
@@ -776,9 +789,11 @@ languages:
     trailing comma is required. An anonymous function is only an argspec
     followed by `=>` and a function body; if it takes only a single
     positional argument, the parentheses may be omitted. A function body
-    can be a single expression, a `{codeblock}`, or a `[markup]` block.
-    See also: `..` operator and the sections on namespaces/scopes and
-    function invocation! ],
+    can be a single expression, like a `[markup]` block, or a
+    `{codeblock}`, which returns its last evaluated value and may be
+    terminated early with *keyword `return`*, which may prefix the
+    expression after which to exit. See also: `..`~operator and the
+    sections on namespaces/scopes and function invocation! ],
 )
 
 The following types are more unusual, but some might be known from CSS:
