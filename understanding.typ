@@ -132,7 +132,8 @@ calling the respective functions:
     ```typ #emph("_italic_text_")```,
     [ _\_italic_text\__ ],
 
-    [
+    table.cell(breakable: false,)[
+
         ``` `` ``` \
         ``` `string` ``` \
         ```` ``` string``` ```` \
@@ -157,7 +158,7 @@ calling the respective functions:
             ```
         ````
     ],
-    par(justify:false,)[
+    table.cell(breakable: false,)[
         ```typ #raw("")``` \
         ```typ #raw("string")``` \
         ```typ #raw("string")``` \
