@@ -77,7 +77,9 @@ shorthand for common functions.
 
 Last, but not least, there are *comments*, which are not officially a
 "mode" because they do not do anything: they are simply ignored by
-the compiler, is if they did not exist.
+the compiler, as if they did not exist. Note, that a line with only a
+comment does not count as an empty line, thus it does not break the
+paragraph!
 ```typ
 - in all modes this /* anything between */ is ignored
 - and in `[markup]` and `#code` mode the following ignores the rest of
