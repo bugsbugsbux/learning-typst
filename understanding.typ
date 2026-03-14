@@ -75,7 +75,7 @@ shorthand for common functions.
 ```
 - Syntax examples: #text(fill: red, [*bold* _italic_ *_bold+italic_*])
 
-Last, but not least, there are *comments*, which are not officially a
+*Comments* are not officially a
 "mode" because they do not do anything: they are simply ignored by
 the compiler, as if they did not exist. Note, that a line with only a
 comment does not count as an empty line, thus it does not break the
