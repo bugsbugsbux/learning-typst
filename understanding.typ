@@ -39,7 +39,10 @@ A typst document is a plain text file with the extension `.typ`. The
 instructions in a typst document are executed by the typst compiler in
 order, meaning they do not effect the previous text.
 
-Code between dollar-signs is interpreted in *`$formula$`* mode, which
+Depending on which mode is currently active text is interpreted
+differently. Certain syntax changes the active mode:
+
+Text between dollar-signs is interpreted in *`$formula$`* mode, which
 allows to typeset formulas beautifully. If there is no whitespace
 between the dollar-signs and the formula, like
 ```typ $a^2 + b^2 = c^2$```, an inline element, like $a^2 + b^2 = c^2$,
