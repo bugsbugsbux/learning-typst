@@ -1,0 +1,8 @@
+[ ] hyphenation can produce `(-` at the end of the line from the input
+    `... (foo bar)`
+
+[ ] how to manually break tables without using #v() which elongates the
+    cell.
+
+[ ] closing smartquotes do not work in context blocks
+    #smartquote(double: true)foo#smartquote(double: true)
