@@ -35,6 +35,111 @@
 
 = Overview
 
+The "typst" markup language is actually a programming language to
+describe in human readable text the visual arrangement of textual and
+other printable content; in other words, to create documents. The typst
+compiler converts the code from these plaintext files with the `.typ`
+extension into an output format such as PDF and a few others.
+
+It is possible to instruct typst to ignore some text completely by
+commenting it out: `//` ignores the rest of the line, while `/*`
+comments out everything until it encounters `*/`, which allows
+multi-line comments, as well as in-line comments. For example, the
+following just outputs: 1 2 3 4 5
+```typ
+1 // ignored
+2 /* ignored */ 3
+4 /* ignored
+also ignored
+still ignored
+*/ 5
+```
+
+In order to feel less like a programming language, typst provides
+different input "modes", which enable different syntax for the most
+common instructions. There is a `[markup]` mode with markdown-like
+syntax for general text input; this is the default! A dedicated
+`$formula$` mode has special syntax to typeset mathematical formulas.
+Direct access to the typst programming language is available via `#code`
+mode.
+```typ
+// The default mode is [markup] mode.
+Paragraphs are separated with empty lines. Markdown-like syntax is
+available: *bold* _italic_ *_bolditalic_*
+
+#let x = 2 // this whole line is in code mode
+
+  1+1= #x #text(
+//^^^^^  ^                  markup mode
+//     ^^                   code mode for this variable only
+//
+    fill: red,
+//
+//
+    [but $1 dot 1 != #x $]
+//
+//
+  ) Funny right?
+//
+//
+
+```
+
+Typst code is interpreted in order, meaning that previous output is not
+affected by later instructions. This means, if there is an instruction
+between two paragraphs that text is to be green, it only affects the
+second paragraph, not the one which came before the instruction.
+
+However, the compiler does multiple runs to gain knowledge and adjust
+the document accordingly. This allows for example to have a table of
+contents at the start of the document: In the first run the compiler
+does not yet know the number of chapters, their names and page numbers.
+In the second run the compiler fills in the table of contents which
+might shift the pages and require rebalancing some, further affecting
+the page numbers. In the third run the compiler knows the correct page
+numbers and can fix them.
+
+Some instructions do not produce output. For example, instructing text
+to be green does not itself produce anything that shows up in the final
+document.
+
+Instructions which do produce output, either create block level
+elements, which do not become part of the surrounding paragraph and, in
+fact, split it, or inline elements, which can be grouped into paragraphs
+(This usually happens automatically unless they are wrapped with
+something that does not also wrap a block level element).
+
+Block elements can be wrapped with `box()` to make them act like inline
+elements. Inline elements can be wrapped with with `par()` to make them
+their own paragraph, and `block()` to ensure they are not part of any
+paragraph.
+
+
+`[markup]` mode is the default mode and can be enabled from `#code`
+mode by wrapping the intended text in brackets. This mode is for
+outputting content and enables markdown-like syntax, for example `*bold*
+_italic_ *_bolditalic_*` renders as: *bold* _italic_ *_bolditalic_*
+
+`#code` mode gives access to the typst programming language, which is
+used to do anything for which there is no a shorthand syntax. It is
+generally accessed with the hash symbol and active until the end of the
+expression, which is usually the end of the word or corresponding
+closing parentheses; for single-line keyword expressions, it is the end
+of the line or a semicolon. In `$formula$` mode the `math` module and
+user defined variables with multi-character names can be used without
+explicitly entering `code` mode.
+
+In `$formula$` mode, aka `$math$` mode, which is denoted by surrounding
+dollar signs
+and enables syntax useful for typesetting mathematical formulas,
+instead of the markdown-like syntax of `[markup]` mode. One cannot
+switch to `[markup]` mode, but names in code mode can be accessed
+without special syntax.
+
+#pagebreak(weak: true)
+
+= Overview
+
 A typst document is a plain text file with the extension `.typ`. The
 instructions in a typst document are executed by the typst compiler in
 order, meaning they do not effect the previous text.
