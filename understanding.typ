@@ -51,7 +51,7 @@ $ x_(1,2) = (-b plus.minus sqrt(b^2 - 4 a c))/(2 a) $
 
 A hash-sign enables *`#code`* mode until the end of the expression,
 which is usually the end of the word or the corresponding closing
-parenthesis. For single-line keyword expressions, it is the end of the
+parenthesis; for single-line keyword expressions, it is the end of the
 line or a semicolon. This mode is for interacting with the typst
 scripting language, which is used to define the look of the resulting
 document.
