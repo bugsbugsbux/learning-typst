@@ -1,6 +1,9 @@
 // requires "Fira Math" font
 // jump: TODO, DEBUG, CHECK, TAG
 
+#import "templ-code.typ": codebgcolor
+#show: doc => codebgcolor(doc)
+
 #let mytitle = "Understanding Typst"
 #set document(title: mytitle)
 #set text(lang: "en", hyphenate: false)
